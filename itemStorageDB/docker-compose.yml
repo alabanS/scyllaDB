@@ -1,0 +1,16 @@
+services:
+  scylla:
+    image: scylladb/scylla:5.4.0
+    container_name: my-scylla
+    ports:
+      - "9042:9042"
+      - "19042:19042"
+
+  scylla-manager:
+    image: scylladb/scylla-manager:3.2.0
+    container_name: scylla-manager
+    ports:
+      - "5080:5080"
+    environment:
+      - SCYLLA_MANAGER_CLUSTER_HOSTS=scylla
+    command: --skip-wait-for-db  # Ключевая опция!
