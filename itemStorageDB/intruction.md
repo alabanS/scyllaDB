@@ -341,7 +341,9 @@ docker exec -it scylla-node1 cqlsh -f /tmp/insert_data.cql
 
 ```bash
 # К узлу 1 (порт 9042)
-docker exec -it scylla-node1 cqlsh
+docker exec -it scylla-node1 cqlsh 10.5.0.2
+docker exec -it scylla-node2 cqlsh 10.5.0.3
+docker exec -it scylla-node3 cqlsh 10.5.0.4
 
 # Или напрямую с хоста
 cqlsh localhost 9042 -e "USE ecommerce; SELECT * FROM product_by_id;"
