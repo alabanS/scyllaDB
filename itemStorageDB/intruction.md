@@ -370,7 +370,7 @@ cqlsh localhost 9044
 
 ```bash
 # Выполняем примеры запросов
-docker exec -it scylla-node1 cqlsh -f /tmp/queries.cql
+docker exec -it scylla-node1 cqlsh 10.5.0.2 -f /tmp/queries.cql
 
 # Или выполняем запросы вручную
 docker exec -it scylla-node1 cqlsh -e "
@@ -493,6 +493,8 @@ curl http://localhost:19044/storage_service/host_ids
 cqlsh localhost 9042 -e "SELECT COUNT(*) FROM ecommerce.product_by_id;"
 cqlsh localhost 9043 -e "SELECT COUNT(*) FROM ecommerce.product_by_id;"
 cqlsh localhost 9044 -e "SELECT COUNT(*) FROM ecommerce.product_by_id;"
+
+docker exec -it scylla-node1 cqlsh 10.5.0.2 -e "SELECT COUNT(*) FROM ecommerce.product_by_id;"
 ```
 
 ## 🔗 Дополнительные ресурсы
