@@ -342,8 +342,9 @@ docker cp insert_data.cql scylla-node1:/tmp/
 docker cp queries.cql scylla-node1:/tmp/
 
 # Выполняем инициализацию
-docker exec -it scylla-node1 cqlsh -f /tmp/init.cql
-docker exec -it scylla-node1 cqlsh -f /tmp/insert_data.cql
+docker exec -it scylla-node1 cqlsh 10.5.0.2 -f /tmp/init.cql
+docker exec -it scylla-node1 cqlsh 10.5.0.2 -f /tmp/insert_data.cql
+docker exec -it scylla-node1 cqlsh 10.5.0.2 -f /tmp/queries.cql
 ```
 
 ## 📊 Работа с данными
