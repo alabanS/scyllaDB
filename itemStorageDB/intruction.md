@@ -47,9 +47,20 @@ touch docker-compose.yml init.cql insert_data.cql queries.cql
 ### 2. Настройка WSL2 (только для Windows)
 
 ```bash
-# Открываем PowerShell от имени администратора и выполняем:
-wsl --shutdown
-wsl -u root -e bash -c "echo 262144 > /proc/sys/fs/aio-max-nr && echo 'fs.aio-max-nr = 262144' >> /etc/sysctl.conf && sysctl -p"
+# Запустите WSL2 от администратора (ПКМ на PowerShell -> Запуск от имени администратора)
+wsl -u root
+
+# Увеличьте лимит ДО запуска контейнеров
+echo 262144 > /proc/sys/fs/aio-max-nr
+
+# Для постоянного решения
+echo "fs.aio-max-nr = 262144" >> /etc/sysctl.conf
+sysctl -p
+
+# Проверьте
+cat /proc/sys/fs/aio-max-nr
+# Должно показать 262144
+exit
 ```
 
 ### 3. Создаем docker-compose.yml
