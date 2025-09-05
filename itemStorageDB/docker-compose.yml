@@ -1,16 +1,53 @@
 services:
-  scylla:
+  scylla-node1:
     image: scylladb/scylla:5.4.0
-    container_name: my-scylla
+    container_name: scylla-node1
+    networks:
+      scylla-net:
+        ipv4_address: 10.5.0.2
     ports:
       - "9042:9042"
       - "19042:19042"
+    command: >
+      --seeds=10.5.0.2
+      --listen-address=10.5.0.2
+      --broadcast-address=10.5.0.2
+      --broadcast-rpc-address=10.5.0.2
+      --endpoint-snitch=SimpleSnitch
+      --smp 1
+      --developer-mode=1
 
-  scylla-manager:
-    image: scylladb/scylla-manager:3.2.0
-    container_name: scylla-manager
-    ports:
-      - "5080:5080"
-    environment:
-      - SCYLLA_MANAGER_CLUSTER_HOSTS=scylla
-    command: --skip-wait-for-db  # Ключевая опция!
+  scylla-node2:
+    image: scylladb/scylla:5.4.0
+    container_name: scylla-node2
+    networks:
+      scylla-net:
+        ipv4_address: 10.5.0.3
+    command: >
+      --seeds=10.5.0.2
+      --listen-address=10.5.0.3
+      --broadcast-address=10.5.0.3
+      --broadcast-rpc-address=10.5.0.3
+      --endpoint-snitch=SimpleSnitch
+      --smp 1
+      --developer-mode=1
+
+  scylla-node3:
+    image: scylladb/scylla:5.4.0
+    container_name: scylla-node3
+    networks:
+      scylla-net:
+        ipv4_address: 10.5.0.4
+    command: >
+      --seeds=10.5.0.2
+      --listen-address=10.5.0.4
+      --broadcast-address=10.5.0.4
+      --broadcast-rpc-address=10.5.0.4
+      --endpoint-snitch=SimpleSnitch
+      --smp 1
+      --developer-mode=1
+
+networks:
+  scylla-net:
+    external: true
+    name: scylla-net
