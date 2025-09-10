@@ -85,7 +85,7 @@ docker exec -it scylla-node1 nodetool status
 ### 2. Миграции базы данных
 Файлы миграций CQL для создания схемы базы данных и наполнения тестовыми данными доступны в репозитории:
 
-[📁 Миграции на GitHub](https://github.com/your-username/scylla-cluster/tree/main/migrations)
+[📁 Миграции на GitHub](https://github.com/alabanS/scyllaDB/tree/main/itemStorageDB/migrations)
 
 ## 📊 Работа с данными
 
