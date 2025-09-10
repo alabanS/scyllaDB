@@ -63,7 +63,7 @@ exit
 ### 3. Конфигурация Docker Compose
 Файл `docker-compose.yml` для развертывания кластера доступен в репозитории проекта:
 
-[📁 docker-compose.yml на GitHub](https://github.com/your-username/scylla-cluster/blob/main/docker-compose.yml)
+[📁 docker-compose.yml на GitHub]([https://github.com/your-username/scylla-cluster/blob/main/docker-compose.yml](https://github.com/alabanS/scyllaDB/blob/main/itemStorageDB/docker-compose.yml))
 
 ## 🚀 Запуск кластера
 
